@@ -1,4 +1,4 @@
-def findEpsPro():
+def findEpsPro(prods):
     for left, right in prods.items():
         if left == 'S':
             continue
@@ -29,9 +29,9 @@ def removeDuplicatdPros(newProds):
     newProds = [newProds[i] for i in range(len(newProds))
                             if i == 0 or newProds[i] != newProds[i-1]]
 
-def removeEps():
+def removeEps(prods):
     while True:
-        epsilonPro, indexOfEpsilon  = findEpsPro()
+        epsilonPro, indexOfEpsilon  = findEpsPro(prods)
         if epsilonPro is None:
             break
 
@@ -52,17 +52,5 @@ def removeEps():
             removeDuplicatdPros(newProds)
             prods[left] = newProds
 
-
-
-
-
-if __name__ == '__main__':
-    prods = dict()
-    prod = ''
-    getInput()
-    print(prods)
-
-    removeEps()
-    print(prods)
 
 

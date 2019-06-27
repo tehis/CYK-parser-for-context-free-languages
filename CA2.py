@@ -14,9 +14,8 @@ def getInput():
 
 if __name__ == '__main__':
     prods = dict()
-    prod = ''
     getInput()
     print(prods)
 
-    removeEps()
+    removeEps(prods)
     print(prods)
