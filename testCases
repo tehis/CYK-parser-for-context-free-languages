@@ -1,0 +1,15 @@
+Removing lambda productions
+A -> aA| e
+$
+
+ S  -> ABC
+A->Aa|a
+B -> Bb | e
+C -> Cc | e
+$
+
+S -> ABac
+A -> BC
+B -> b|e
+C -> D|e
+D -> d
