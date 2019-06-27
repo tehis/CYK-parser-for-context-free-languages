@@ -1,11 +1,8 @@
 def findEpsPro(prods):
     for left, right in prods.items():
-        if left == 'S':
-            continue
-        for i in range(len(right)):
-            if right[i] == 'e':
-                return left, i
-    return None, None
+        if "e" in right:
+            return left
+    return None
 
 
 def calcAllCombinations(specificRight, numberOfEpsPro, epPro):
@@ -29,20 +26,31 @@ def removeDuplicatdPros(newProds):
     newProds = [newProds[i] for i in range(len(newProds))
                             if i == 0 or newProds[i] != newProds[i-1]]
 
+def removeEmptyStrings(prods):
+    for prod in prods:
+        right = prods[prod]
+        for idx, p in enumerate(prods[prod]):
+            if p == '':
+                del prods[prod][idx]
+            if len(prods[prod]) == 0:
+                del prods[prod]
+
 def removeEps(prods):
     while True:
-        epsilonPro, indexOfEpsilon  = findEpsPro(prods)
+        epsilonPro = findEpsPro(prods)
+        print("epsPro : ", epsilonPro)
+
         if epsilonPro is None:
             break
 
-        del prods[epsilonPro][indexOfEpsilon]
-        print("epsilon pro : ", epsilonPro)
+        # delete epsilon rule
+        prods[epsilonPro].remove("e")
 
         for left in prods:
-            right  = prods[left]
+            rightHand  = prods[left]
             newProds = []
 
-            for p in right:
+            for p in rightHand:
                 numberOfEpsPro = p.count(epsilonPro)
                 if numberOfEpsPro == 0:
                     newProds.append(p)
@@ -51,6 +59,4 @@ def removeEps(prods):
 
             removeDuplicatdPros(newProds)
             prods[left] = newProds
-
-
-
+    removeEmptyStrings(prods)

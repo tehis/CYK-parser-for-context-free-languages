@@ -1,5 +1,15 @@
 from EpsilonRemover import *
+from UnitRemover import *
 
+
+def printGrammer():
+    print("========================================")
+    for left in prods:
+        print(left, " -> ", end="")
+        for r in prods[left]:
+            print(r, " | ", end="")
+        print()
+    print("=========================================")
 def getInput():
     while True:
         prod = input().split("->")
@@ -15,7 +25,11 @@ def getInput():
 if __name__ == '__main__':
     prods = dict()
     getInput()
-    print(prods)
+    printGrammer()
 
     removeEps(prods)
-    print(prods)
+    printGrammer()
+
+    removeUnitRules(prods)
+    printGrammer()
+

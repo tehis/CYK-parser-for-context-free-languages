@@ -1,15 +1,51 @@
 Removing lambda productions
 A -> aA| e
 $
+output
+A -> aA | a
 
- S  -> ABC
+ S  -> ABCa
 A->Aa|a
 B -> Bb | e
 C -> Cc | e
 $
+output:
+𝑆 → 𝐴 | 𝐴𝐵 | 𝐴𝐶 | 𝐴𝐵𝐶
+𝐴 → 𝐴𝑎 | 𝑎
+𝐵 → 𝐵𝑏 | 𝑏
+𝐶 → 𝐶𝑐 | 𝑐
 
-S -> ABac
+S -> ABaC
 A -> BC
 B -> b|e
 C -> D|e
 D -> d
+$
+output
+S -> ABaC|BaC|AaC|ABa|aC|Aa|Ba|a
+A -> B|C|BC
+B -> b
+C -> D
+D ->d
+============================================
+
+UnitRemover
+
+A -> aA|B
+B -> bB | AA
+$
+output
+A -> aA|bB|AA
+B -> bB|AA
+
+S -> A
+A -> B
+B-> C
+C -> S|cB|c
+$
+output
+S -> cB|c
+A -> cB|c
+B -> cB|c
+C -> cB|c
+
