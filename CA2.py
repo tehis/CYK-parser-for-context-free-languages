@@ -1,6 +1,7 @@
 from EpsilonRemover import *
 from UnitRemover import *
-
+from Useless import *
+from GetCNF import *
 
 def printGrammer():
     print("========================================")
@@ -24,12 +25,26 @@ def getInput():
 
 if __name__ == '__main__':
     prods = dict()
+    print("Enter grammar!")
     getInput()
-    printGrammer()
+    # printGrammer()
 
+    print("Remove epsilon rules")
     removeEps(prods)
     printGrammer()
 
+    print("Remove unit rules")
     removeUnitRules(prods)
     printGrammer()
+
+    print("Remove Useless rules")
+    removeUselessRules(prods)
+    printGrammer()
+
+    print("Convert to chomsky form")
+    convertToCnf(prods)
+    printGrammer()
+
+    print("CYK algorithm")
+
 

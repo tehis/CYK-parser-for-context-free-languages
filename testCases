@@ -27,6 +27,15 @@ A -> B|C|BC
 B -> b
 C -> D
 D ->d
+
+S → a | aA | B
+A → aBB | ε
+B → Aa | b
+$
+S1 → S
+S → a | aA | B
+A → aBB
+B → Aa | b | a
 ============================================
 
 UnitRemover
@@ -49,3 +58,46 @@ A -> cB|c
 B -> cB|c
 C -> cB|c
 
+S1 → S
+S → a | aA | Aa | b
+A → aBB
+B → Aa | b | a
+$
+output
+S0 → a | aA | Aa | b
+S → a | aA | Aa | b
+A → aBB
+B → Aa | b | a
+===========================================
+
+Useless
+S -> abS | abA | abB
+A -> Cd
+B -> aB
+C -> dc
+$
+output
+S -> abS | abA
+A -> cd
+C -> dc
+
+S -> AB|AC
+A -> aAb|bAa|a
+B -> bbA|aaB|AB
+C -> abCA|aDb
+D -> bD|aC
+$
+output
+S -> AB
+A -> aAb|bAa|a
+B -> bbA|aaB|AB
+
+
+S->aS|A|C
+A->a
+B->aa
+C -> aCb
+$
+output
+S -> aS|A
+A -> a
