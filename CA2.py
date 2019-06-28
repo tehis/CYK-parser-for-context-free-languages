@@ -13,7 +13,7 @@ def printGrammer():
             print(r, " | ", end="")
         print()
     print("=========================================")
-def getInput():
+def getGrammar():
     while True:
         prod = input().split("->")
         if prod == ['$']:
@@ -25,35 +25,44 @@ def getInput():
 
         prods[leftSide] = rightSide.split("|")
 
+def getWord():
+    print("Enter your words to check membership:")
+    while True:
+        word = input().strip()
+        if word == "$":
+            break
+        if checkMembership(prods, word):
+            print("Accepted")
+        else:
+            print("Rejected")
+
 if __name__ == '__main__':
     prods = dict()
     print("Enter grammar!")
-    getInput()
-    # printGrammer()
+    getGrammar()
 
-    print("Remove epsilon rules")
-    removeEps(prods)
-    printGrammer()
+    if not checkCNF(prods):
+        print("The grammar is not CNF")
+        print("Remove epsilon rules")
+        prods = removeEpsilon(prods)
+        printGrammer()
 
-    print("Remove unit rules")
-    removeUnitRules(prods)
-    printGrammer()
+        print("Remove unit rules")
+        removeUnitRules(prods)
+        printGrammer()
 
-    print("Remove Useless rules")
-    removeUselessRules(prods)
-    printGrammer()
+        print("Remove Useless rules")
+        removeUselessRules(prods)
+        printGrammer()
 
-    print("Convert to chomsky form")
-    convertToCnf(prods)
-    printGrammer()
-
-    print("check membership")
-    print("Enter your word")
-    w = input()
-    if checkMembership(prods, w):
-        print("Accepted!")
+        print("Convert to chomsky form")
+        convertToCnf(prods)
+        printGrammer()
     else:
-        print("Rejected")
+        print("The grammar is CNF")
+
+    getWord()
+
 
 
 

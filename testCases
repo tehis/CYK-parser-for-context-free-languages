@@ -4,7 +4,7 @@ $
 output
 A -> aA | a
 
- S  -> ABCa
+ S  -> ABC
 A->Aa|a
 B -> Bb | e
 C -> Cc | e
@@ -28,9 +28,9 @@ B -> b
 C -> D
 D ->d
 
-S → a | aA | B
-A → aBB | ε
-B → Aa | b
+S -> a|aA|B
+A -> aBB|e
+B -> Aa|b
 $
 S1 → S
 S → a | aA | B
@@ -134,5 +134,12 @@ X -> AT
 A -> a
 B -> b
 $
-
 aaabbb +
+
+S -> AB
+A -> BB|a
+B -> AB|b
+$
+aabbb   +
+
+

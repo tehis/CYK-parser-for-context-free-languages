@@ -66,6 +66,21 @@ def convertToCnf(prods):
     #handling two
     handlingRrulesOfLengthTwo(prods)
 
+def checkCNF(prods):
+    for prod in prods:
+        rightHand = prods[prod]
+        for right in rightHand:
+            if right == "e":
+                return False
+            if len(right) > 2:
+                return False
+            else:
+                if len(right) == 1 and right.isupper():
+                    return False
+                if len(right) == 2:
+                    if right[0].islower() or right[1].islower():
+                        return False
+    return True
 
 
 
