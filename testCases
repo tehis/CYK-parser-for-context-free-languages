@@ -101,3 +101,38 @@ $
 output
 S -> aS|A
 A -> a
+
+==============================================
+membership
+S -> AB
+A -> BB|a
+B -> AB|b
+$
+aabbb   +
+ab      +
+ba      -
+aabbabaab -
+
+A -> AB|CD
+B -> AB|CD
+C -> AB|CD
+D -> AB|CD
+S -> AB|CD
+A ->x
+B -> x
+C -> x
+D -> x
+$
+x   -
+xx  +
+xxx +
+
+
+S -> AB|XB
+T -> AB | XB
+X -> AT
+A -> a
+B -> b
+$
+
+aaabbb +
