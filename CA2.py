@@ -2,6 +2,8 @@ from EpsilonRemover import *
 from UnitRemover import *
 from Useless import *
 from GetCNF import *
+from CYK import *
+
 
 def printGrammer():
     print("========================================")
@@ -45,6 +47,13 @@ if __name__ == '__main__':
     convertToCnf(prods)
     printGrammer()
 
-    print("CYK algorithm")
+    print("check membership")
+    print("Enter your word")
+    w = input()
+    if checkMembership(prods, w):
+        print("Accepted!")
+    else:
+        print("Rejected")
+
 
 

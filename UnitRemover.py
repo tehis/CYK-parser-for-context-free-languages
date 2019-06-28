@@ -9,7 +9,7 @@ def removeUnitRules(prods):
             break
 
         left, right, rightIdx = unitRule[0], unitRule[1], unitRule[2]
-        print(left, " ", right, " ", rightIdx)
+        # print(left, " ", right, " ", rightIdx)
 
         # Remove A -> B
         del prods[left][rightIdx]

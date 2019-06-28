@@ -60,3 +60,31 @@ def removeEps(prods):
             removeDuplicatdPros(newProds)
             prods[left] = newProds
     removeEmptyStrings(prods)
+
+def findOccurrence(prods, epsiloPro):
+    neededRules = []
+    for left, rightHand in prods.items():
+        for right in rightHand:
+            processed = ''.join(right.split(epsiloPro))
+            if processed != right:
+                neededRules.append((left, right))
+    return neededRules
+
+# def removeEps(prods):
+#     while True:
+#         epsilonPro = findEpsPro(prods)
+#         if epsilonPro is None:
+#             break
+#         prods[epsilonPro].remove("e")
+#         neededRules = findOccurrence(prods, epsilonPro)
+#
+#         for left, right in neededRules:
+#             for i in range(len(right)):
+#                 if right[i] == epsilonPro:
+#                     if i+1 < len(right):
+#                         prods[left].append(right[:i] + right[i+1:])
+#                     else:
+#                         prods[left].append(right[:i])
+
+
+
