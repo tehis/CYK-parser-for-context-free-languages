@@ -45,15 +45,15 @@ if __name__ == '__main__':
         print("The grammar is not CNF")
         print("Remove epsilon rules")
         prods = removeEpsilon(prods)
-        printGrammer()
+        # printGrammer()
 
         print("Remove unit rules")
         removeUnitRules(prods)
-        printGrammer()
+        # printGrammer()
 
         print("Remove Useless rules")
         removeUselessRules(prods)
-        printGrammer()
+        # printGrammer()
 
         print("Convert to chomsky form")
         convertToCnf(prods)

@@ -78,7 +78,7 @@ C -> dc
 $
 output
 S -> abS | abA
-A -> cd
+A -> Cd
 C -> dc
 
 S -> AB|AC
